@@ -7,7 +7,7 @@ export function Burbuja({ resumen }: { resumen: Resumen }) {
     <header className="hud burbuja" aria-live="polite">
       <h1>
         <span className="orbe" aria-hidden="true" />
-        Oficina de Jules
+        Hangar de Cuarentenas
       </h1>
       <p className="burbuja-resumen">{linea}</p>
       <p className="burbuja-mensaje">

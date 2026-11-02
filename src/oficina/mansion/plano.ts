@@ -191,16 +191,16 @@ function ambiente(
 
 const ambientes: Ambiente[] = [
   ambiente('gimnasio', 'Gimnasio', 'piso1', -16, -10, -4, 4, 'personal'),
-  ambiente('living', 'Living', 'piso1', -10, -4, -4, 4, 'personal'),
+  ambiente('living', 'Shelf Life Vencido', 'piso1', -10, -4, -4, 4, 'personal'),
   ambiente('atrio', 'Atrio', 'piso1', -4, 4, -4, 4, null, { alto: 7.5 }),
   ambiente('cocina', 'Cocina', 'piso1', 4, 16, -4, 4, null),
-  ambiente('finanzas', 'Finanzas', 'piso2', -16, -4, -4, 4, 'finanzas'),
+  ambiente('finanzas', 'Scrap & Disposición', 'piso2', -16, -4, -4, 4, 'finanzas'),
   ambiente('pasarela', 'Pasarela', 'piso2', -4, 4, -4, -2.5, null, { pasilloZ: -3.25 }),
-  ambiente('ventas', 'Ventas', 'piso2', 4, 16, -4, 4, 'ventas'),
-  ambiente('desarrollo', 'Desarrollo', 'piso3', -16, -4, -4, 4, 'desarrollo'),
+  ambiente('ventas', 'Devoluciones RMA', 'piso2', 4, 16, -4, 4, 'ventas'),
+  ambiente('desarrollo', 'Falta de Documentación', 'piso3', -16, -4, -4, 4, 'desarrollo'),
   ambiente('rellano', 'Rellano', 'piso3', -4, 4, -4, 4, null),
-  ambiente('contenido', 'Contenido', 'piso3', 4, 16, -4, 4, 'contenido'),
-  ambiente('investigacion', 'Observatorio', 'torre', -4, 4, -4, 2, 'investigacion', {
+  ambiente('contenido', 'Part Number Divergente', 'piso3', 4, 16, -4, 4, 'contenido'),
+  ambiente('investigacion', 'Trazabilidad Incompleta', 'torre', -4, 4, -4, 2, 'investigacion', {
     pasilloZ: 0.7,
   }),
   ambiente('terraza', 'Terraza', 'piso1', -16, 16, 4, 10, 'personal', { alto: 0 }),

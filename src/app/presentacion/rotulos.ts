@@ -9,7 +9,7 @@ const PISO: Record<string, string> = {
 };
 
 /** El guion llama «gimnasio» al living (ahí están el Asistente y el Coach). */
-const NOMBRE_ROTULADO: Record<string, string> = { living: 'Gimnasio' };
+const NOMBRE_ROTULADO: Record<string, string> = { living: 'Shelf Life Vencido' };
 
 /** Rótulo de sala tipo documental: «Piso 3 · Desarrollo». El atrio va solo; `null` = sin rótulo. */
 export function rotuloAmbiente(id: string | null): string | null {

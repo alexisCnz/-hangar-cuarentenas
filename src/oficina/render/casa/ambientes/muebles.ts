@@ -517,11 +517,29 @@ const TRAZOS: Record<string, readonly (readonly [number, number, number, number]
     [0.5, 1, 1, 0],
     [0.22, 0.42, 0.78, 0.42],
   ],
+  C: [
+    [0.8, 1, 0.15, 1],
+    [0.15, 1, 0, 0.85],
+    [0, 0.85, 0, 0.15],
+    [0, 0.15, 0.15, 0],
+    [0.15, 0, 0.8, 0],
+  ],
+  E: [
+    [0, 0, 0, 1],
+    [0, 1, 0.8, 1],
+    [0, 0.5, 0.65, 0.5],
+    [0, 0, 0.8, 0],
+  ],
+  I: [[0.5, 0, 0.5, 1]],
   L: [
     [0, 1, 0, 0],
     [0, 0, 0.8, 0],
   ],
-  I: [[0.5, 0, 0.5, 1]],
+  N: [
+    [0, 0, 0, 1],
+    [0, 1, 0.8, 0],
+    [0.8, 0, 0.8, 1],
+  ],
   R: [
     [0, 0, 0, 1],
     [0, 1, 0.72, 1],
@@ -531,15 +549,20 @@ const TRAZOS: Record<string, readonly (readonly [number, number, number, number]
     [0.72, 0.5, 0, 0.5],
     [0.4, 0.5, 0.9, 0],
   ],
-  E: [
-    [0, 0, 0, 1],
+  T: [
     [0, 1, 0.8, 1],
-    [0, 0.5, 0.65, 0.5],
-    [0, 0, 0.8, 0],
+    [0.4, 1, 0.4, 0],
+  ],
+  U: [
+    [0, 1, 0, 0.15],
+    [0, 0.15, 0.15, 0],
+    [0.15, 0, 0.65, 0],
+    [0.65, 0, 0.8, 0.15],
+    [0.8, 0.15, 0.8, 1],
   ],
 };
 
-/** Letrero de neón «AL AIRE» rojo sobre una placa negra con separadores de latón. */
+/** Letrero de neón «CUARENTENA» rojo sobre una placa negra con separadores de latón. */
 const letreroNeon: Dibujo = (t, m) => {
   const { ancho: w, alto: h } = m;
   t.bloque('acero', 0, 0, -0.035, w - 0.06, h, 0.02);
@@ -547,17 +570,18 @@ const letreroNeon: Dibujo = (t, m) => {
     for (const y of [0.08, h - 0.08])
       t.cilindro('laton', x, y, -0.015, 0.012, 0.012, 0.03, 8, { rx: PI / 2 });
   }
-  const texto = 'AL AIRE';
-  const celda = 0.19;
-  const paso = 0.225;
-  const alto = 0.34;
+  const texto = 'CUARENTENA';
+  const celda = 0.11;
+  const paso = 0.142;
+  const alto = 0.28;
   const total = texto.length * paso - (paso - celda);
+  const yOffset = (h - alto) / 2;
   [...texto].forEach((letra, k) => {
     const x0 = -total / 2 + k * paso;
     for (const [a, b, c, d] of TRAZOS[letra] ?? []) {
-      const [xa, ya, xb, yb] = [x0 + a * celda, 0.13 + b * alto, x0 + c * celda, 0.13 + d * alto];
+      const [xa, ya, xb, yb] = [x0 + a * celda, yOffset + b * alto, x0 + c * celda, yOffset + d * alto];
       const largo = Math.hypot(xb - xa, yb - ya);
-      t.caja('emisivo', (xa + xb) / 2, (ya + yb) / 2, 0.01, largo + 0.02, 0.022, 0.02, {
+      t.caja('emisivo', (xa + xb) / 2, (ya + yb) / 2, 0.01, largo + 0.015, 0.018, 0.018, {
         rz: Math.atan2(yb - ya, xb - xa),
         color: '#ff2b3c',
       });

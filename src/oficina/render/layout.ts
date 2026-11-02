@@ -2,14 +2,14 @@ import type { AgenteOficina, Departamento } from '../tipos';
 import { ambienteDe, lugaresDe, plano } from '../mansion/plano';
 import type { Lugar } from '../mansion/plano';
 
-/** Los 6 departamentos del prototipo. */
+/** Los 6 departamentos del prototipo: salas del Hangar de Cuarentenas Aeronáuticas. */
 export const departamentosBase: Departamento[] = [
-  { id: 'desarrollo', nombre: 'Desarrollo', lider: 'Tu producto', color: '#5b7fd6' },
-  { id: 'ventas', nombre: 'Ventas', lider: 'Tu negocio', color: '#d9825f' },
-  { id: 'contenido', nombre: 'Contenido', lider: '@elkis.dev', color: '#b98ad6' },
-  { id: 'finanzas', nombre: 'Finanzas', lider: 'Tus números', color: '#79b98a' },
-  { id: 'personal', nombre: 'Personal', lider: 'Tu vida', color: '#d8b56a' },
-  { id: 'investigacion', nombre: 'Investigación', lider: 'Ciencia', color: '#7fc4de' },
+  { id: 'desarrollo', nombre: 'Falta de Documentación', lider: 'FAA 8130-3 / EASA Form 1', color: '#4a7fcb' },
+  { id: 'ventas', nombre: 'Devoluciones RMA', lider: 'Reclamos a Proveedor Demo', color: '#e07a5f' },
+  { id: 'contenido', nombre: 'Part Number Divergente', lider: 'Discrepancias P/N vs PO', color: '#8e7cc3' },
+  { id: 'finanzas', nombre: 'Scrap & Disposición', lider: 'Mutilación & Notas de Crédito', color: '#d9534f' },
+  { id: 'personal', nombre: 'Shelf Life Vencido', lider: 'Elastómeros & Vida Límite', color: '#d4a373' },
+  { id: 'investigacion', nombre: 'Trazabilidad Incompleta', lider: 'Auditoría Back-to-Birth', color: '#5fa8d3' },
 ];
 
 export interface Punto {
