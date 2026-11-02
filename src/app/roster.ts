@@ -2,27 +2,43 @@ import { departamentosBase } from '@jules/oficina';
 import type { Actividad, AgenteOficina, EstadoAgente } from '@jules/oficina';
 
 const TAREAS: Record<string, string> = {
-  'Front designer': 'Armando el panel de pedidos con filtros por estado.',
-  Backend: 'Migración de inventario por bodega. Corriendo tests.',
-  QA: 'Revisando la versión de prueba en un iPhone real.',
-  Integrador: 'La rama pasó todo. Pide permiso para subir a producción.',
+  'Front designer':
+    'Inspeccionando lote de álabes P/N CFM56-BLD-9041 (PO-AERO-7701 Demo). Falta FAA Form 8130-3 original del taller.',
+  Backend:
+    'Reclamando duplicado digital de EASA Form 1 al taller reparador AeroTurbine Ficticio.',
+  QA: 'Liberación técnica detenida para válvula P/N VLV-402-HYD. Certificado de conformidad ilegible.',
+  Integrador:
+    'Acta de liberación técnica lista para álabe P/N CFM56-BLD-9041. Espera tu firma de QA para desmarcar de cuarentena.',
   'Ejecutivo de ventas':
-    'Preparó 6 seguimientos por WhatsApp para clientes de octubre. Espera tu aprobación para enviar.',
-  'Analista comercial': 'Cruzando cotizaciones con ventas cerradas del mes.',
-  Redactor: 'Escribiendo mensajes en tu tono para nuevos clientes.',
-  Guionista: 'Último trabajo: guion del episodio 14.',
-  'Editor de video': 'Renderizando el reel de la semana.',
-  Community: 'Ordenando comentarios para que respondas.',
-  Contador: 'Cierre de octubre programado para el lunes a las 09:00.',
-  Planificador: 'Proyectando gastos de noviembre.',
-  Cobranza: 'Revisando pagos pendientes de clientes.',
-  'Asistente personal': 'Ordenando tu agenda de mañana y tus pendientes.',
-  Coach: 'Prepara tu revisión semanal del domingo.',
-  Compras: 'Comparando precios de lo que dejaste en tu lista.',
+    'Expediente RMA-4402 preparado contra Titan Aero Components Demo. Espera tu aprobación para despachar.',
+  'Analista comercial':
+    'Cruzando costos de flete internacional por devoluciones RMA con el proveedor SkySupply Ficticio.',
+  Redactor:
+    'Redactando informe de no conformidad técnica por bomba con fuga de combustible en banco de pruebas.',
+  Guionista:
+    'Documentando discrepancia en actuador: empaque rotulado P/N ACT-9920-A pero pieza física grabada P/N ACT-9920-B.',
+  'Editor de video':
+    'Procesando fotografías macro de la placa de datos para informe de divergencia física P/N.',
+  Community:
+    'Consultando catálogo ilustrado de partes (IPC) para confirmar si P/N ACT-9920-B es alterno aprobado.',
+  Contador:
+    'Conciliando nota de crédito NC-8821 Demo por $14,200 USD tras scrap de corona dentada no reparable.',
+  Planificador:
+    'Coordinando corte físico con soplete y certificado BER (Beyond Economical Repair) de tren de aterrizaje.',
+  Cobranza:
+    'Reclamando nota de crédito pendiente al proveedor GlobalParts Ficticio por componente mutilado.',
+  'Asistente personal':
+    'Monitoreando temperatura y humedad relativa en la bóveda climatizada de sellos según ATA 106.',
+  Coach:
+    'Programando rotación y descarte preventivo de sellantes y sellos con fecha de cura próxima a vencer.',
+  Compras:
+    'Cotizando reemplazo urgente de kit de juntas P/N SL-KIT-084 vencido con proveedor AeroPlast Demo.',
   Científico:
-    'Boletín de la semana: entrenamiento, sueño, finanzas, agentes e interfaces generativas.',
-  'Vigía de novedades': 'Siguiendo lanzamientos de modelos nuevos.',
-  Verificador: 'Revisando si tres noticias tienen fuente primaria.',
+    'Auditando trazabilidad completa Back-to-Birth de disco de turbina P/N CF6-DSK-3320 de AeroNordic Ficticio.',
+  'Vigía de novedades':
+    'Monitoreando nuevas directivas de aeronavegabilidad (ADs) de FAA/EASA aplicables a partes en almacén.',
+  Verificador:
+    'Verificando firmas y licencias de mecánicos A&P en registros históricos de mantenimiento mayor.',
 };
 
 /** Roles de cada departamento; `true` = se puede clonar para llenar la sala. */
@@ -127,25 +143,43 @@ export function armarRoster(cantidad: number): AgenteOficina[] {
 }
 
 const TAREAS_RECORRIDO: Record<string, string> = {
-  'Front designer': 'Armando el panel de pedidos con filtros por estado.',
-  Backend: 'Migración de inventario por bodega. Corriendo tests.',
-  QA: 'Revisando la versión de prueba en un iPhone real.',
-  Integrador: 'La rama pasó todo. Pide permiso para subir a producción.',
-  'Ejecutivo de ventas': 'Preparó 6 seguimientos por WhatsApp. Espera tu aprobación para enviar.',
-  'Analista comercial': 'Cruzando cotizaciones con ventas cerradas del mes.',
-  Redactor: 'Escribiendo mensajes en tu tono para nuevos clientes.',
-  Guionista: 'Escribiendo el guion del próximo video.',
-  'Editor de video': 'Renderizando el reel de la semana.',
-  Community: 'Ordenando comentarios para que respondas.',
-  Contador: 'Cierre de mes programado para el lunes a las 09:00.',
-  Planificador: 'Proyectando gastos del próximo mes.',
-  Cobranza: 'Revisando pagos pendientes.',
-  'Asistente personal': 'Ordenando tu agenda de mañana y tus pendientes.',
-  Coach: 'Prepara tu revisión semanal del domingo.',
-  Compras: 'Comparando precios de lo que dejaste en tu lista.',
-  Científico: 'Boletín de la semana: sueño, finanzas y agentes.',
-  'Vigía de novedades': 'Siguiendo lanzamientos de modelos nuevos.',
-  Verificador: 'Revisando si tres noticias tienen fuente primaria.',
+  'Front designer':
+    'Inspeccionando lote de álabes P/N CFM56-BLD-9041 (PO-AERO-7701 Demo). Falta FAA Form 8130-3 original del taller.',
+  Backend:
+    'Reclamando duplicado digital de EASA Form 1 al taller reparador AeroTurbine Ficticio.',
+  QA: 'Liberación técnica detenida para válvula P/N VLV-402-HYD. Certificado de conformidad ilegible.',
+  Integrador:
+    'Acta de liberación técnica lista para álabe P/N CFM56-BLD-9041. Espera tu firma de QA para desmarcar de cuarentena.',
+  'Ejecutivo de ventas':
+    'Expediente RMA-4402 preparado contra Titan Aero Components Demo. Espera tu aprobación para despachar.',
+  'Analista comercial':
+    'Cruzando costos de flete internacional por devoluciones RMA con el proveedor SkySupply Ficticio.',
+  Redactor:
+    'Redactando informe de no conformidad técnica por bomba con fuga de combustible en banco de pruebas.',
+  Guionista:
+    'Documentando discrepancia en actuador: empaque rotulado P/N ACT-9920-A pero pieza física grabada P/N ACT-9920-B.',
+  'Editor de video':
+    'Procesando fotografías macro de la placa de datos para informe de divergencia física P/N.',
+  Community:
+    'Consultando catálogo ilustrado de partes (IPC) para confirmar si P/N ACT-9920-B es alterno aprobado.',
+  Contador:
+    'Conciliando nota de crédito NC-8821 Demo por $14,200 USD tras scrap de corona dentada no reparable.',
+  Planificador:
+    'Coordinando corte físico con soplete y certificado BER (Beyond Economical Repair) de tren de aterrizaje.',
+  Cobranza:
+    'Reclamando nota de crédito pendiente al proveedor GlobalParts Ficticio por componente mutilado.',
+  'Asistente personal':
+    'Monitoreando temperatura y humedad relativa en la bóveda climatizada de sellos según ATA 106.',
+  Coach:
+    'Programando rotación y descarte preventivo de sellantes y sellos con fecha de cura próxima a vencer.',
+  Compras:
+    'Cotizando reemplazo urgente de kit de juntas P/N SL-KIT-084 vencido con proveedor AeroPlast Demo.',
+  Científico:
+    'Auditando trazabilidad completa Back-to-Birth de disco de turbina P/N CF6-DSK-3320 de AeroNordic Ficticio.',
+  'Vigía de novedades':
+    'Monitoreando nuevas directivas de aeronavegabilidad (ADs) de FAA/EASA aplicables a partes en almacén.',
+  Verificador:
+    'Verificando firmas y licencias de mecánicos A&P en registros históricos de mantenimiento mayor.',
 };
 
 /**
