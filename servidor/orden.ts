@@ -180,7 +180,7 @@ export function promptDelAgente(peticion: PeticionOrden, juicio: Juicio, nombre?
       : 'Confirma qué vas a hacer con la orden y cómo.';
   const { perfil } = juicio;
   return [
-    `Eres ${agente}, ${rol} en la oficina de Jules.${tarea ? ` Tu tarea actual: ${tarea}.` : ''}`,
+    `Eres ${agente}, ${rol} en el Hangar de Cuarentenas.${tarea ? ` Tu tarea actual: ${tarea}.` : ''}`,
     'Hablas tú, en primera persona, como ese agente: no eres Jules ni un asistente genérico.',
     ...(perfil
       ? [

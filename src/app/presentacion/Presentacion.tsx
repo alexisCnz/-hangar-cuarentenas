@@ -59,7 +59,7 @@ const OCULTAR_PAUSA_MS = 2000;
 /** Cuánto se queda el rótulo de sala al entrar a un ambiente. */
 const ROTULO_SALA_MS = 3500;
 const AVISO_GRABACION_MS = 1000;
-const TEXTO_CTA = 'Comenta tu color favorito 🎨';
+const TEXTO_CTA = 'Comenta «HANGAR» y te comparto el proyecto ✈️';
 
 const sinMovimiento = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

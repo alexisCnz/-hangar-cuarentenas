@@ -26,9 +26,11 @@ export interface Demo {
   valentinaDesde: number;
 }
 
-export const ORDEN_NICO = 'Haz seguimiento a los clientes de octubre';
-export const RESPUESTA_NICO = 'Hecho. Empiezo ahora mismo.';
-export const TAREA_VALENTINA = 'Guion del reel: «Tengo diecinueve empleados y ninguno es humano…»';
+export const ORDEN_NICO = 'Despacha el expediente RMA-4402 a Titan Aero Demo';
+export const RESPUESTA_NICO =
+  'Expediente despachado. Reclamo de garantía notificado al proveedor.';
+export const TAREA_VALENTINA =
+  'Informe de discrepancia: empaque rotulado P/N ACT-9920-A pero pieza física P/N ACT-9920-B.';
 
 const VIAJE = 0.9;
 /** Duración del pulso del clic y cuánto se queda el cursor después de él. */
