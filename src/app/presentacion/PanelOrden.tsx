@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { departamentosBase } from '@jules/oficina';
 import type { AgenteOficina, EstadoAgente } from '@jules/oficina';
+import { CARGOS_VISIBLES } from '../roster';
 import { sugerenciasDe } from './ordenes';
 
 const TITULO: Record<EstadoAgente, string> = {
@@ -66,7 +67,7 @@ export function PanelOrden({
         <div>
           <h2>{agente.nombre}</h2>
           <div className="sub">
-            {agente.rol} · {depto ? depto.nombre : agente.departamento}
+            {CARGOS_VISIBLES[agente.rol] ?? agente.rol} · {depto ? depto.nombre : agente.departamento}
           </div>
         </div>
         <button type="button" className="btn-cerrar" onClick={onCerrar} aria-label="Cerrar panel">

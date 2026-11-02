@@ -11,187 +11,225 @@ export interface Clip {
   aprobacion: boolean;
 }
 
-const GENERICAS = ['Dame un resumen', 'Prioriza lo urgente', 'Avísame cuando termines'];
+const GENERICAS = [
+  'Emitir reporte de condición',
+  'Mantener precinto de cuarentena',
+  'Verificar trazabilidad en ERP',
+];
 
 /** Tres órdenes rápidas por rol, para grabar sin escribir. */
 const SUGERENCIAS: Record<string, string[]> = {
   'Front designer': [
-    'Haz el botón más grande',
-    'Revisa el modo oscuro',
-    'Ajusta el espaciado del panel',
+    'Exigir FAA 8130-3 original',
+    'Validar firma del taller en EASA Form 1',
+    'Rechazar lote por falta de release note',
   ],
   Backend: [
-    'Revisa la migración pendiente',
-    'Agrega un índice a pedidos',
-    'Corre los tests de nuevo',
+    'Solicitar duplicado a AeroTurbine Ficticio',
+    'Confirmar número de autorización',
+    'Corroborar bloque 12 de observaciones',
   ],
-  QA: ['Prueba el flujo de pago', 'Revisa en un iPhone real', 'Busca errores en el login'],
-  Integrador: ['Sube la rama a producción', 'Espera hasta mañana', 'Resume qué cambió'],
+  QA: [
+    'Bloquear ingreso de válvula en ERP',
+    'Colocar precinto rojo de rechazo',
+    'Revisar si sello de aduana coincide',
+  ],
+  Integrador: [
+    'Aprobar liberación técnica de álabe',
+    'Mantener retención en cuarentena',
+    'Emitir certificado de conformidad final',
+  ],
   'Ejecutivo de ventas': [
-    'Envía los seguimientos de hoy',
-    'Cambia el tono a más cercano',
-    'Sube a diez los seguimientos',
+    'Despachar expediente RMA a Titan Aero Demo',
+    'Exigir nota de crédito inmediata',
+    'Pausar envíos a proveedor no conforme',
   ],
   'Analista comercial': [
-    'Compara este mes con el anterior',
-    'Dime qué cotización se enfría',
-    'Arma el cierre semanal',
+    'Calcular flete aéreo de retorno',
+    'Totalizar costo de repuestos varados',
+    'Comparar penalidades por demora',
   ],
-  Redactor: ['Escribe un mensaje de bienvenida', 'Hazlo más corto', 'Prepara tres versiones'],
+  Redactor: [
+    'Redactar informe de no conformidad técnica',
+    'Notificar discrepancia a Compras Demo',
+    'Emitir reporte de condición de pieza',
+  ],
   Guionista: [
-    'Escribe el gancho del próximo reel',
-    'Resume el guion en tres líneas',
-    'Propón cinco títulos',
+    'Revisar código de barras en empaque',
+    'Confrontar P/N físico con orden PO',
+    'Marcar lote con etiqueta amarilla de mismatch',
   ],
-  'Editor de video': ['Corta el silencio del inicio', 'Agrega subtítulos', 'Exporta en vertical'],
+  'Editor de video': [
+    'Tomar boroscopía de número de serie',
+    'Medir holgura de acople con calibre',
+    'Adjuntar fotos al legajo de cuarentena',
+  ],
   Community: [
-    'Responde los comentarios nuevos',
-    'Marca los que son preguntas',
-    'Prepara el mensaje fijado',
+    'Buscar alterno equivalente en manual IPC',
+    'Consultar boletín de servicio (SB)',
+    'Validar modificación menor de P/N',
   ],
-  Contador: ['Cierra el mes ahora', 'Revisa las boletas pendientes', 'Dime cuánto IVA toca pagar'],
+  Contador: [
+    'Registrar nota de crédito en el ledger',
+    'Validar monto de indemnización de seguro',
+    'Dar de baja pieza del balance de activos',
+  ],
   Planificador: [
-    'Proyecta los gastos de diciembre',
-    'Busca dónde recortar',
-    'Compara con el presupuesto',
+    'Emitir certificado de mutilación BER',
+    'Coordinar corte de pieza con soplete',
+    'Archivar acta de destrucción física',
   ],
-  Cobranza: ['Recuerda los pagos atrasados', 'Prepara un aviso amable', 'Lista quién debe más'],
+  Cobranza: [
+    'Reclamar saldo a GlobalParts Ficticio',
+    'Bloquear pagos a proveedor en falta',
+    'Confirmar depósito de nota de crédito',
+  ],
   'Asistente personal': [
-    'Mueve mi reunión a la tarde',
-    'Ordena mi agenda de mañana',
-    'Recuérdame llamar al banco',
+    'Revisar higrómetro en bóveda de sellos',
+    'Registrar bitácora ambiental ATA 106',
+    'Ajustar climatización a 21°C',
   ],
   Coach: [
-    'Prepara mi revisión del domingo',
-    'Dime una meta para la semana',
-    'Revisa cómo voy con mis hábitos',
+    'Auditar sellos con fecha de cura próxima a vencer',
+    'Rotar inventario bajo regla FIFO',
+    'Separar elastómeros vencidos a scrap',
   ],
   Compras: [
-    'Busca el mejor precio de mi lista',
-    'Compara dos proveedores',
-    'Arma el pedido del mes',
+    'Pedir cotización de O-rings a AeroPlast Demo',
+    'Exigir lote con fecha de cura menor a 6 meses',
+    'Tramitar orden de compra PO-AERO-9012 Demo',
   ],
   Científico: [
-    'Resume el estudio de la semana',
-    'Busca fuentes sobre sueño',
-    'Explícamelo en dos frases',
+    'Reconstruir historial Back-to-Birth',
+    'Verificar ciclos de vida desde fábrica',
+    'Comprobar horas de vuelo en AeroNordic Ficticio',
   ],
   'Vigía de novedades': [
-    'Avísame de modelos nuevos',
-    'Resume los lanzamientos de hoy',
-    'Sigue a estos tres equipos',
+    'Consultar directivas de emergencia FAA',
+    'Filtrar partes afectadas por AD 2026-11',
+    'Reportar componente crítico a Calidad',
   ],
   Verificador: [
-    'Verifica esta noticia',
-    'Busca la fuente primaria',
-    'Marca lo que no tiene respaldo',
+    'Comprobar licencia A&P de mecánico firmante',
+    'Validar sello del taller de overhaul',
+    'Detectar enmiendas en bitácora técnica',
   ],
 };
 
 /** Respuestas cortas y con carácter por rol (locales, sin red ni API). */
 const RESPUESTAS: Record<string, string[]> = {
   'Front designer': [
-    'Me encanta. Lo dejo precioso.',
-    'Pixel a pixel, ya lo veo.',
-    'Listo, y se ve mejor que antes.',
+    'Anotado. Sin FAA Form 8130-3 válido no sale ningún álabe a la línea.',
+    'Revisando el release note del taller. Si no cumple, se queda retenido.',
+    'Cotejando firmas autorizadas en el bloque 14 del certificado.',
   ],
   Backend: [
-    'Anotado. Nada de esto rompe producción.',
-    'Voy, con respaldo primero.',
-    'Ya lo estoy corriendo.',
+    'Enlace enviado a AeroTurbine Ficticio. Reclamando copia fiel digital.',
+    'Esperando confirmación del taller reparador.',
+    'Verificando el registro en el portal de trazabilidad.',
   ],
   QA: [
-    'Si se rompe, me entero primero.',
-    'Voy a intentar romperlo.',
-    'Lo pruebo en serio, no en teoría.',
+    'Pieza bloqueada en el ERP. Etiqueta roja colocada.',
+    'Ningún componente dudoso entra al stock aeronavegable.',
+    'Inspección dimensional en curso. Te informo ante cualquier desvío.',
   ],
   Integrador: [
-    'Entendido. Lo dejo listo, pero no subo nada sin tu aprobación.',
-    'Preparado. Espero tu permiso para continuar.',
-    'Todo en orden de mi lado. Tú das la señal.',
+    'Entendido. Legajo técnico armado, pero no libero la pieza sin tu visto bueno.',
+    'Pieza en cuarentena. Espero tu firma técnica para habilitar el despacho.',
+    'Todos los sellos de calidad están listos. Tú autorizas la salida.',
   ],
   'Ejecutivo de ventas': [
-    'Perfecto. Los mensajes están listos, esperan tu visto bueno.',
-    'Lo ajusto. Nada sale hasta que apruebes.',
-    'Hecho. Dime cuándo y los envío.',
+    'Expediente RMA armado contra Titan Aero Demo. Espera tu aprobación para el retorno.',
+    'Reclamo formal listo. No despachamos nada hasta que lo revises.',
+    'Garantía lista para enviar al proveedor. Tú das la orden.',
   ],
   'Analista comercial': [
-    'Cruzando números, vuelvo con una conclusión.',
-    'Los datos ya dicen algo interesante.',
-    'Dame un momento y te lo cuento claro.',
+    'Calculando flete y lucro cesante por pieza inoperativa.',
+    'El costo de la cuarentena ya está documentado en la reclamación.',
+    'Analizando impacto financiero del retorno RMA.',
   ],
   Redactor: [
-    'Con tu tono, sin sonar a robot.',
-    'Va, lo escribo como lo dirías tú.',
-    'Tengo la primera línea. Ya sigo.',
+    'Reporte de condición redactado con estándar técnico aeronáutico.',
+    'Detallando la fuga en el sello para que el proveedor no la objete.',
+    'Carta de discrepancia lista para el departamento de calidad.',
   ],
   Guionista: [
-    'Ya tengo el gancho en la cabeza.',
-    'Escena uno, a escribir.',
-    'Dame cinco minutos y tienes guion.',
+    'Divergencia de P/N fotografiada y registrada en el sistema.',
+    'Empaque y placa no coinciden: discrepancia formal en proceso.',
+    'Documentando diferencia física para el rechazo en recepción.',
   ],
   'Editor de video': [
-    'Renderizando. Café incluido.',
-    'Corte limpio, ya mismo.',
-    'Va al timeline ahora.',
+    'Fotos macro en alta resolución adjuntas a la ficha de la pieza.',
+    'Boroscopía completada: el número de serie físico coincide con el rechazo.',
+    'Evidencia fotográfica lista para auditoría.',
   ],
   Community: [
-    'Yo respondo, tú decides cuáles.',
-    'Los ordeno por urgencia.',
-    'Listo, nadie se queda sin respuesta.',
+    'Revisando catálogo IPC: el P/N no figura como alterno homologado.',
+    'Consultando los boletines de servicio del fabricante.',
+    'Confirmando si la modificación de número de parte fue certificada.',
   ],
   Contador: [
-    'Cuadrando los números, como siempre.',
-    'Anotado. Todo con respaldo.',
-    'Lo reviso y te lo dejo en orden.',
+    'Nota de crédito por repuesto scrap conciliada con precisión.',
+    'Todo con soporte documental: baja de inventario y crédito en orden.',
+    'Revisando valor residual y recupero contable del material.',
   ],
   Planificador: [
-    'Proyección en marcha.',
-    'Lo simulo y te muestro el resultado.',
-    'Entendido, armo el escenario.',
+    'Orden de corte y mutilación física BER programada.',
+    'Coordinando la inutilización del componente para evitar piezas no autorizadas (SUP).',
+    'Certificado de destrucción preparado para archivo aeronáutico.',
   ],
   Cobranza: [
-    'Con tacto y con fecha.',
-    'Lo preparo amable pero firme.',
-    'Anotado, nadie se me escapa.',
+    'Seguimiento al reembolso de GlobalParts Ficticio en marcha.',
+    'Exigiendo la nota de crédito por la pieza declarada chatarra.',
+    'Crédito a favor reclamado al proveedor.',
   ],
   'Asistente personal': [
-    'Tu agenda queda ordenada.',
-    'Hecho, y con recordatorio.',
-    'Ya lo muevo, tú no te preocupes.',
+    'Condiciones ambientales de la bóveda dentro de los rangos ATA 106.',
+    'Bitácora de temperatura y humedad al día.',
+    'Almacén de elastómeros controlado y seguro.',
   ],
-  Coach: ['Buen foco. Lo preparo para ti.', 'Una cosa a la vez, vamos.', 'Perfecto, esto suma.'],
+  Coach: [
+    'Lote de sellos auditado. Descartando los que superaron el shelf life.',
+    'Plan de rotación de material perecible actualizado.',
+    'Prevención de vida límite en marcha.',
+  ],
   Compras: [
-    'Comparando precios ahora mismo.',
-    'Encuentro algo mejor, seguro.',
-    'Anotado, voy por la mejor oferta.',
+    'Cotización de reemplazo urgente pedida a AeroPlast Demo.',
+    'Exigiendo certificado de cura reciente para el nuevo lote.',
+    'Gestionando reposición inmediata de material aeronavegable.',
   ],
   Científico: [
-    'Interesante. Reviso la evidencia.',
-    'Solo con fuente, como siempre.',
-    'Déjame leerlo bien antes de opinar.',
+    'Trazabilidad Back-to-Birth auditada: faltaba un registro de operador previo.',
+    'Solo componentes con historial 100% ininterrumpido pueden volar.',
+    'Reconstruyendo la cadena de custodia desde la entrega de fábrica.',
   ],
   'Vigía de novedades': [
-    'Atento. Si sale algo, te aviso.',
-    'Ya estoy mirando.',
-    'Nada se me pasa.',
+    'Monitoreo de Directivas de Aeronavegabilidad (ADs) al día.',
+    'Alerta técnica: verificando si este lote está bajo boletín mandatorio.',
+    'Base de datos de la autoridad aeronáutica contrastada.',
   ],
   Verificador: [
-    'Sin fuente primaria no hay noticia.',
-    'Voy a contrastarlo.',
-    'Lo verifico antes de darlo por cierto.',
+    'Firmas y estampillas de mecánicos A&P verificadas en sistema.',
+    'Bitácoras históricas contrastadas: los sellos son conformes.',
+    'Verificando trazabilidad documental antes de la auditoría.',
   ],
 };
 
-const RESPUESTAS_GENERICAS = ['Anotado, me pongo en eso.', 'Va, ya empiezo.', 'Entendido.'];
+const RESPUESTAS_GENERICAS = [
+  'Anotado, registro la acción técnica.',
+  'Entendido, pieza bajo custodia.',
+  'Procedimiento de cuarentena actualizado.',
+];
 
 /** Alivio al aprobar, por rol. */
 const ALIVIO: Record<string, string> = {
-  Integrador: 'Gracias. Subo ahora y respiro tranquilo.',
-  'Ejecutivo de ventas': 'Por fin. Envío los mensajes ahora.',
+  Integrador:
+    'Firma de QA recibida. Álabe liberado de cuarentena y transferido a stock aeronavegable.',
+  'Ejecutivo de ventas':
+    'Autorización recibida. Expediente RMA despachado y reclamo formal presentado a Titan Aero Demo.',
 };
-const ALIVIO_GENERICO = 'Gracias. Me pongo en marcha.';
-const RECHAZO = 'Entendido. Lo dejo en pausa.';
+const ALIVIO_GENERICO = 'Conformidad técnica otorgada. Procediendo con el plan de acción.';
+const RECHAZO = 'Decisión acatada. El repuesto permanece bajo precinto de cuarentena hasta nueva orden.';
 
 export const sugerenciasDe = (rol: string): string[] => SUGERENCIAS[rol] ?? GENERICAS;
 
@@ -227,7 +265,7 @@ export const siguiente = (cola: Clip[]): { clip: Clip | undefined; resto: Clip[]
 
 /** Lo que dice el agente cuando el cerebro marca su orden como delicada y no hay texto del modelo. */
 export const FRASE_ORDEN_DELICADA =
-  'Esta orden es delicada: te digo qué haré y espero tu aprobación.';
+  'Esta orden afecta la aeronavegabilidad: preparo el legajo y espero tu firma de QA.';
 
 /** Queda `esperando_decision` con la orden como tarea, en el formato que lee `aprobar`. */
 export function esperarDecision(agente: AgenteOficina, orden: string): AgenteOficina {

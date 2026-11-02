@@ -1,5 +1,6 @@
 import { plano } from '@jules/oficina';
 import type { AgenteOficina } from '@jules/oficina';
+import { CARGOS_VISIBLES } from '../roster';
 
 const PISO: Record<string, string> = {
   piso1: 'Piso 1',
@@ -29,7 +30,11 @@ export interface RotuloAgente {
 }
 
 /** Rótulo de Jules mientras la cámara está en el atrio. */
-export const ROTULO_JULES: RotuloAgente = { nombre: 'Jules', rol: 'Jefa de gabinete', linea: '' };
+export const ROTULO_JULES: RotuloAgente = {
+  nombre: 'Jules',
+  rol: 'Supervisora de Calidad & Cuarentenas',
+  linea: '',
+};
 
 /** Nombre grande, rol y una línea de lo que hace el agente enfocado; `null` si no hay o no existe. */
 export function rotuloAgente(id: string | null, agentes: AgenteOficina[]): RotuloAgente | null {
@@ -38,7 +43,7 @@ export function rotuloAgente(id: string | null, agentes: AgenteOficina[]): Rotul
   const primera = (agente.tarea ?? '').split(/(?<=[.!?])\s/)[0] ?? '';
   return {
     nombre: agente.nombre,
-    rol: agente.rol,
+    rol: CARGOS_VISIBLES[agente.rol] ?? agente.rol,
     linea: primera.replace(/[.!?]+$/, ''),
   };
 }

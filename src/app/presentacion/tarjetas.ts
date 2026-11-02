@@ -10,12 +10,12 @@ export const TARJETAS: {
   dx?: number;
   dy?: number;
 }[] = [
-  { sala: 'desarrollo', agenteId: '0:Front designer', accion: 'Armando pantallas' },
-  { sala: 'contenido', agenteId: '2:Guionista', accion: 'Escribiendo guiones' },
-  { sala: 'ventas', agenteId: '1:Ejecutivo de ventas', accion: 'Siguiendo a clientes' },
-  { sala: 'finanzas', agenteId: '3:Contador', accion: 'Cuadrando el mes' },
-  { sala: 'living', agenteId: '4:Coach', accion: 'Esperando tu orden' },
-  { sala: 'investigacion', agenteId: '5:Científico', accion: 'Leyendo estudios', dx: 330, dy: 70 },
+  { sala: 'desarrollo', agenteId: '0:Front designer', accion: 'Inspector de Certificación' },
+  { sala: 'contenido', agenteId: '2:Guionista', accion: 'Verificadora de Recepción' },
+  { sala: 'ventas', agenteId: '1:Ejecutivo de ventas', accion: 'Gestor de RMA y Garantías' },
+  { sala: 'finanzas', agenteId: '3:Contador', accion: 'Analista de Scrap y Notas de Crédito' },
+  { sala: 'living', agenteId: '4:Coach', accion: 'Supervisor de Vida Límite' },
+  { sala: 'investigacion', agenteId: '5:Científico', accion: 'Auditor de Trazabilidad', dx: 330, dy: 70 },
 ];
 
 /** Segundos entre una tarjeta y la siguiente en la cascada, y lo que dura cada entrada/salida. */

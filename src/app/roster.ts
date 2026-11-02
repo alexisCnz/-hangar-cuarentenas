@@ -98,6 +98,29 @@ const POR_SALA: Record<number, number[]> = {
   30: [5, 5, 5, 5, 5, 5],
 };
 
+/** Cargos visibles en pantalla para el Hangar de Cuarentenas (sin cambiar la clave interna `rol`). */
+export const CARGOS_VISIBLES: Record<string, string> = {
+  'Front designer': 'Inspector de Certificación',
+  Backend: 'Verificador de Registros',
+  QA: 'Auditora de Recepción',
+  Integrador: 'Ingeniero de Liberación QA',
+  'Ejecutivo de ventas': 'Gestor de RMA y Garantías',
+  'Analista comercial': 'Analista de Costos y Retornos',
+  Redactor: 'Coordinador de Discrepancias',
+  Guionista: 'Verificadora de Recepción',
+  'Editor de video': 'Especialista en Metrología e Imagen',
+  Community: 'Analista de Catálogos e IPC',
+  Contador: 'Analista de Scrap y Notas de Crédito',
+  Planificador: 'Gestor de Disposición y Mutilación',
+  Cobranza: 'Recuperadora de Créditos de Repuestos',
+  'Asistente personal': 'Monitoreo de Almacén Climatizado',
+  Coach: 'Supervisor de Inspecciones Periódicas',
+  Compras: 'Especialista en Reposición de Sellos',
+  Científico: 'Auditor de Trazabilidad',
+  'Vigía de novedades': 'Monitor de Directivas de Aeronavegabilidad',
+  Verificador: 'Verificadora de Firmas y Logbooks',
+};
+
 export const CANTIDADES = [9, 18, 30];
 
 /** Roster de ejemplo del laboratorio (9, 18 o 30 agentes), determinista. */
@@ -109,7 +132,8 @@ export function armarRoster(cantidad: number): AgenteOficina[] {
     const clave = `${sala}:${rol}`;
     const n = (usados.get(clave) ?? 0) + 1;
     usados.set(clave, n);
-    const nombre = n > 1 ? `${rol} · ${n}` : rol;
+    const nombreBase = NOMBRES_RECORRIDO[rol] ?? rol;
+    const nombre = n > 1 ? `${nombreBase} · ${n}` : nombreBase;
     agentes.push({
       id: `${sala}:${nombre}`,
       nombre,
@@ -117,7 +141,7 @@ export function armarRoster(cantidad: number): AgenteOficina[] {
       departamento: departamentosBase[sala]?.id ?? '',
       estado,
       actividad,
-      tarea: TAREAS[rol] ?? 'Trabajando en su brief.',
+      tarea: TAREAS[rol] ?? 'Trabajando en inspección técnica.',
     });
   };
   for (const [sala, rol, estado, actividad] of BASE) agregar(sala, rol, estado, actividad);

@@ -1,5 +1,6 @@
 import { departamentosBase } from '@jules/oficina';
 import type { AgenteOficina, EstadoAgente } from '@jules/oficina';
+import { CARGOS_VISIBLES } from './roster';
 
 const TITULO: Record<EstadoAgente, string> = {
   trabajando: 'Trabajando',
@@ -38,7 +39,7 @@ export function Detalle({ agente, onEstado, onVestir }: Props) {
       <div>
         <h2>{agente.nombre}</h2>
         <div className="sub">
-          {depto ? `${depto.nombre} · ${depto.lider}` : agente.departamento}
+          {CARGOS_VISIBLES[agente.rol] ?? agente.rol} · {depto ? depto.nombre : agente.departamento}
         </div>
       </div>
       <div className={`estado estado-${agente.estado}`}>
