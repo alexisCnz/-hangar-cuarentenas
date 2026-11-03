@@ -1,6 +1,7 @@
 import { departamentosBase } from '@jules/oficina';
 import type { AgenteOficina, EstadoAgente } from '@jules/oficina';
 import { CARGOS_VISIBLES } from './roster';
+import { CERTCHECK_URL } from './enlaces';
 
 const TITULO: Record<EstadoAgente, string> = {
   trabajando: 'Trabajando',
@@ -58,6 +59,11 @@ export function Detalle({ agente, onEstado, onVestir }: Props) {
         <button type="button" className="btn" onClick={onVestir}>
           Vestir
         </button>
+        {agente.rol === 'Front designer' && (
+          <a href={CERTCHECK_URL} target="_blank" rel="noopener noreferrer" className="btn btn-enlace">
+            Validar certificado con CertCheck AI ↗
+          </a>
+        )}
       </div>
       <p className="nota">{nota}</p>
     </aside>

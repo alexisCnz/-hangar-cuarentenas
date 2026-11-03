@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { departamentosBase } from '@jules/oficina';
 import type { AgenteOficina, EstadoAgente } from '@jules/oficina';
 import { CARGOS_VISIBLES } from '../roster';
+import { CERTCHECK_URL } from '../enlaces';
 import { sugerenciasDe } from './ordenes';
 
 const TITULO: Record<EstadoAgente, string> = {
@@ -103,6 +104,13 @@ export function PanelOrden({
           <button type="button" className="btn" onClick={onRechazar}>
             Rechazar
           </button>
+        </div>
+      )}
+      {agente.rol === 'Front designer' && (
+        <div className="acciones">
+          <a href={CERTCHECK_URL} target="_blank" rel="noopener noreferrer" className="btn btn-enlace">
+            Validar certificado con CertCheck AI ↗
+          </a>
         </div>
       )}
       <form className="orden-form" onSubmit={alEnviar}>

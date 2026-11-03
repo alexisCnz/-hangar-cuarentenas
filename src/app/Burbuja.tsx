@@ -1,4 +1,5 @@
 import type { Resumen } from './resumen';
+import { CERTCHECK_URL } from './enlaces';
 
 /** Marca y burbuja de Jules: resumen de la oficina y qué decisiones esperan. */
 export function Burbuja({ resumen }: { resumen: Resumen }) {
@@ -14,6 +15,9 @@ export function Burbuja({ resumen }: { resumen: Resumen }) {
         {mensaje.negrita && <b>{mensaje.negrita}</b>}
         {mensaje.resto}
       </p>
+      <a href={CERTCHECK_URL} target="_blank" rel="noopener noreferrer" className="chip-certcheck">
+        Probar CertCheck AI ↗
+      </a>
     </header>
   );
 }

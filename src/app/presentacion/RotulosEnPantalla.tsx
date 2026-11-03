@@ -60,14 +60,14 @@ export function RotuloDeAgente({ rotulo }: { rotulo: RotuloAgente | null }) {
   );
 }
 
-/** Rótulo fijo de todo el video, arriba al centro: el choque «19 empleados / 0 humanos». */
+/** Rótulo fijo de todo el video, arriba al centro: «6 cuarentenas / 1 hangar». */
 export function RotuloFijo() {
   return (
     <div className="pres-fijo" role="note">
       <b>
-        19 empleados / <i>0</i> humanos
+        6 cuarentenas / <i>1</i> hangar
       </b>
-      <span>Mi oficina de agentes de IA</span>
+      <span>Gestión de repuestos aeronáuticos · datos ficticios</span>
     </div>
   );
 }

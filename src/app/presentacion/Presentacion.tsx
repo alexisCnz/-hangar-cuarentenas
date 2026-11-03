@@ -38,6 +38,7 @@ import { CTA, ROTULO_FIJO, SUBTITULO } from './disposicion';
 import { TarjetasFlotantes } from './TarjetasFlotantes';
 import { RETRASO_SALUDO_MS, crearSfx } from './sonidos';
 import { accionDeTecla } from './teclas';
+import { CERTCHECK_URL } from '../enlaces';
 import '../estilos.css';
 
 const BASE = `${import.meta.env.BASE_URL}presentacion/`.replace(/\/{2,}/g, '/');
@@ -839,6 +840,11 @@ export function Presentacion() {
         </p>
       )}
       {pausado && !grabando && <p className="pres-enpausa">En pausa</p>}
+      {fase === 'libre' && !grabando && (
+        <a href={CERTCHECK_URL} target="_blank" rel="noopener noreferrer" className="chip-certcheck pres-certcheck">
+          Probar CertCheck AI ↗
+        </a>
+      )}
       {puedePausar && !grabando && (
         <button
           type="button"
