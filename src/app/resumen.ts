@@ -15,7 +15,7 @@ export function resumir(agentes: AgenteOficina[]): Resumen {
   const trabajando = agentes.filter((a) => a.estado === 'trabajando').length;
   const esperando = agentes.filter((a) => a.estado === 'esperando_decision');
   const esperan = esperando.length;
-  const linea = `${trabajando} trabajando · ${esperan} ${esperan === 1 ? 'espera' : 'esperan'} tu decisión · ${departamentosBase.length} departamentos`;
+  const linea = `${trabajando} trabajando · ${esperan} ${esperan === 1 ? 'espera' : 'esperan'} tu decisión · ${departamentosBase.length} salas de cuarentena`;
 
   const primero = esperando[0];
   if (!primero) {
@@ -23,7 +23,7 @@ export function resumir(agentes: AgenteOficina[]): Resumen {
       trabajando,
       esperan,
       linea,
-      mensaje: { negrita: '', resto: 'Todo en marcha. Nadie te necesita ahora.' },
+      mensaje: { negrita: '', resto: 'Ninguna pieza espera tu firma. Todo en marcha.' },
     };
   }
   if (esperan === 1) {

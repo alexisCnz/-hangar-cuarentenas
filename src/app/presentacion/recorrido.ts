@@ -1,6 +1,7 @@
 import { buscarFrase, normalizar } from './alineacion';
 import type { Palabra } from './alineacion';
 import type { Paso } from './guion';
+import { SUBTITULOS_HANGAR } from './subtitulosHangar';
 
 export type Fase = 'espera' | 'guiado' | 'libre';
 /** Quién habla en el dúo. */
@@ -87,16 +88,18 @@ const COLA_VOZ = 0.25;
 const sinColgante = (texto: string) => texto.replace(/[,;:]+$/, '');
 
 function armarBloques(palabras: Palabra[], vozDe: (linea: number) => Voz): Bloque[] {
-  const bloques: Bloque[] = [];
+  const bloquesPorLinea = new Map<number, { t0: number; t1: number; voz: Voz }[]>();
   let acumuladas: Palabra[] = [];
   const cerrar = () => {
     if (acumuladas.length === 0) return;
-    bloques.push({
+    const lin = acumuladas[0]!.linea;
+    const b = {
       t0: acumuladas[0]!.t0,
       t1: acumuladas[acumuladas.length - 1]!.t1,
-      texto: sinColgante(acumuladas.map((p) => p.texto).join(' ')),
-      voz: vozDe(acumuladas[0]!.linea),
-    });
+      voz: vozDe(lin),
+    };
+    if (!bloquesPorLinea.has(lin)) bloquesPorLinea.set(lin, []);
+    bloquesPorLinea.get(lin)!.push(b);
     acumuladas = [];
   };
   palabras.forEach((p, i) => {
@@ -106,7 +109,41 @@ function armarBloques(palabras: Palabra[], vozDe: (linea: number) => Voz): Bloqu
     const finDeLinea = palabras[i + 1]?.linea !== p.linea;
     if (fuerte || suave || finDeLinea || acumuladas.length >= PALABRAS_MAX) cerrar();
   });
-  return bloques;
+
+  const resultado: Bloque[] = [];
+  for (const [lin, lista] of bloquesPorLinea.entries()) {
+    const textoNuevo = SUBTITULOS_HANGAR[lin];
+    if (!textoNuevo) continue;
+    const palabrasNuevas = textoNuevo.trim().split(/\s+/);
+    const duracionTotal = lista.reduce((acc, b) => acc + (b.t1 - b.t0), 0);
+    let palabraIdx = 0;
+    let acumDur = 0;
+
+    lista.forEach((b, i) => {
+      acumDur += b.t1 - b.t0;
+      const ratio = duracionTotal > 0 ? acumDur / duracionTotal : (i + 1) / lista.length;
+      const hasta =
+        i === lista.length - 1
+          ? palabrasNuevas.length
+          : Math.min(
+              palabrasNuevas.length,
+              Math.max(
+                palabraIdx + 1,
+                Math.round(ratio * palabrasNuevas.length),
+              ),
+            );
+      const asignadas = palabrasNuevas.slice(palabraIdx, hasta);
+      palabraIdx = hasta;
+      resultado.push({
+        t0: b.t0,
+        t1: b.t1,
+        texto: sinColgante(asignadas.join(' ')),
+        voz: b.voz,
+      });
+    });
+  }
+  resultado.sort((a, b) => a.t0 - b.t0);
+  return resultado;
 }
 
 /** Convierte el guion y las palabras con tiempos en la línea de tiempo de la cámara y la demo. */
